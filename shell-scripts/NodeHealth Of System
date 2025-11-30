@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# simple-node-health.sh
+# Basic node health check — clean, simple, no fancy stuff.
+
+SERVICES="$1"   # optional comma list like: ssh,docker
+
+echo "=== Node Health Report ==="
+echo "Host: $(hostname)"
+echo "Time: $(date)"
+echo
+
+echo "== Uptime =="
+uptime
+echo
+
+echo "== Memory =="
+free -h | sed -n '1,2p'
+echo
+
+echo "== Disk Usage =="
+df -h | sed -n '1,6p'
+echo
+
+echo "== Top CPU Processes =="
+ps -eo pid,cmd,%cpu --sort=-%cpu | head -n 5
+echo
+
+echo "== Top Memory Processes =="
+ps -eo pid,cmd,%mem --sort=-%mem | head -n 5
+echo
+
+echo "== Network (ping 8.8.8.8) =="
+if ping -c 2 -W 2 8.8.8.8 >/dev/null 2>&1; then
+  echo "Network: OK"
+else
+  echo "Network: FAILED"
+fi
+echo
+
+if [[ -n "$SERVICES" ]]; then
+  echo "== Service Checks =="
+  IFS=',' read -ra LIST <<< "$SERVICES"
+  for svc in "${LIST[@]}"; do
+    svc=$(echo "$svc" | xargs)
+    if systemctl is-active --quiet "$svc" 2>/dev/null; then
+      echo "$svc : active"
+    else
+      echo "$svc : inactive or not found"
+    fi
+  done
+fi
+
+echo
+echo "Health check complete."
