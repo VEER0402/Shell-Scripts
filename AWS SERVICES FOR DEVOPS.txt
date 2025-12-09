@@ -1,0 +1,40 @@
+AWS SERVICES FOR DEVOPS 
+
+EC2 (Live project , deployed a web application , exposed to the internet (external world) , dynamic
+
+VPC   Virtual Private Cloud - private , securing the aws resources like  the ec2 instances , Various components of VPS - security group , subnet , inbound and outbound , CIDR , etc 
+
+EBS - volume and storage related services , EFS , file storage and block storage related services how to attach a volume to a the services 
+
+S3 (storage) - where to keep data of a application any kind of data or files , s3 buckets 
+
+IAM (identity and access management) - all the application that  we use first we have to configure the project means to give everyone different access read write etc
+
+CLOUD WATCH - monitoring and observability , to make a reliable and sustainable application AWS have access to all the log and activities 
+
+LAMBDA - serverless compute created and treadown automatically create the instance execute and then end the instances , used for short instance or small job , tasks 
+
+CLOUD BUILD SERVICE - AWS code pipeline (like jenkins pipeline) , AWS code build , AWS code deploy Continuous integration and continuous delivery
+ 
+AWS CONFIGURATION SERVICE - what are the configuration service that we want , we can perform remedy action and do some guard related action 
+
+Billing and costing - how much money is spend and where its spend must have idea about that
+ 
+AWS KMS (AWS Key management services)- to keep data secure , ex encryption s3, configuration , other access and security related access 
+
+CLOUD TRAIL - used to enable your operational and risk auditing , means we have to know about auditing , governance and compliance (ex EBS mandatory to be encrypted ) it stored the information of the API logs , Its is something that records our API ACTIVITIES 
+AWS EKS - AWS Elastic Kubernetes Services kubernetes services provided by aws , first we should have good knowledge of kubernetes
+
+FAR GATE -  without kubernetes it have elastic container service not based on kubernetes 
+
+ELK stack- elastic search stack -  elastic search , log search , kibana 
+To collect the log in  - it is a efficient logging search mechanism , or splunk can be use 
+Better combination log stash and kibana 
+
+This services that we must have good understanding  but other than this you need to know things based on your project requirement 
+
+Important Interview question 
+Q. Difference between AWS EKS vs  AWS ECS?
+AWS ECS-  elastic container service its a proprietary  aws services made by AWS 
+ whereas 
+AWS EKS - is a managed kubernetes services means aws have taken kubernetes and managed it as service 
